@@ -1,0 +1,19 @@
+apply plugin:'java'
+version=0.1
+description='Ejemplo de uso de Gradle para Revista Software Guru'
+defaultTasks 'build', 'assemble'
+
+repositories {
+  mavenCentral()
+}
+dependencies {
+  testCompile 'junit:junit:4.8.2'
+}
+task javadocJar(type:Jar, dependsOn:'javadoc') {
+	from javadoc.destinationDir
+	classifier='javadoc'
+}
+task sourcesJar(type:Jar) {
+	from sourceSets.main.allSource
+	classifier='sources'
+}
